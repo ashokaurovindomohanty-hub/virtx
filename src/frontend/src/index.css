@@ -1,0 +1,303 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 1rem;
+
+    /* Deep space dark theme - primary palette */
+    --background: 0.13 0.048 265;
+    --foreground: 0.94 0.015 265;
+
+    --card: 0.16 0.055 265;
+    --card-foreground: 0.94 0.015 265;
+
+    --popover: 0.18 0.06 265;
+    --popover-foreground: 0.94 0.015 265;
+
+    /* Cyan accent as primary */
+    --primary: 0.72 0.18 205;
+    --primary-foreground: 0.1 0.04 265;
+
+    --secondary: 0.2 0.07 270;
+    --secondary-foreground: 0.88 0.02 265;
+
+    --muted: 0.22 0.05 265;
+    --muted-foreground: 0.62 0.05 265;
+
+    /* Violet/purple accent */
+    --accent: 0.55 0.22 290;
+    --accent-foreground: 0.98 0.01 0;
+
+    --destructive: 0.6 0.22 25;
+    --destructive-foreground: 0.98 0.01 0;
+
+    --border: 0.3 0.06 265;
+    --input: 0.22 0.07 265;
+    --ring: 0.72 0.18 205;
+
+    /* Chart colors: cyan, violet, magenta, teal, blue */
+    --chart-1: 0.72 0.18 205;
+    --chart-2: 0.58 0.24 290;
+    --chart-3: 0.65 0.28 320;
+    --chart-4: 0.7 0.16 185;
+    --chart-5: 0.55 0.2 250;
+
+    --sidebar: 0.14 0.052 265;
+    --sidebar-foreground: 0.94 0.015 265;
+    --sidebar-primary: 0.72 0.18 205;
+    --sidebar-primary-foreground: 0.1 0.04 265;
+    --sidebar-accent: 0.2 0.07 270;
+    --sidebar-accent-foreground: 0.88 0.02 265;
+    --sidebar-border: 0.25 0.06 265;
+    --sidebar-ring: 0.72 0.18 205;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      oklch(0.72 0.18 205),
+      oklch(0.6 0.28 290),
+      oklch(0.7 0.3 320)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      oklch(0.72 0.18 205 / 0.15),
+      oklch(0.6 0.28 290 / 0.15)
+    );
+  }
+
+  .gradient-border {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    background-image: linear-gradient(
+        oklch(0.16 0.055 265),
+        oklch(0.16 0.055 265)
+      ),
+      linear-gradient(
+        135deg,
+        oklch(0.72 0.18 205 / 0.5),
+        oklch(0.6 0.28 290 / 0.5)
+      );
+    background-origin: border-box;
+  }
+
+  .card-glow {
+    box-shadow: 0 0 0 1px oklch(1 0 0 / 0.08), 0 4px 24px
+      oklch(0.1 0.04 265 / 0.8), 0 0 40px oklch(0.55 0.24 290 / 0.06);
+  }
+
+  .neon-glow-cyan {
+    box-shadow: 0 0 20px oklch(0.72 0.18 205 / 0.4), 0 0 40px
+      oklch(0.72 0.18 205 / 0.15);
+  }
+
+  .neon-glow-purple {
+    box-shadow: 0 0 20px oklch(0.6 0.28 290 / 0.4), 0 0 40px
+      oklch(0.6 0.28 290 / 0.15);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.72 0.18 205),
+      oklch(0.55 0.28 290)
+    );
+    color: oklch(0.98 0.005 265);
+  }
+
+  .btn-gradient:hover {
+    background: linear-gradient(
+      135deg,
+      oklch(0.78 0.2 205),
+      oklch(0.62 0.3 290)
+    );
+    box-shadow: 0 0 20px oklch(0.72 0.18 205 / 0.3);
+  }
+
+  .glass-panel {
+    background: oklch(0.16 0.055 265 / 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(1 0 0 / 0.08);
+  }
+
+  .page-bg {
+    background: radial-gradient(
+        ellipse at 20% 30%,
+        oklch(0.2 0.1 265 / 0.4) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 80% 70%,
+        oklch(0.18 0.12 290 / 0.3) 0%,
+        transparent 60%
+      ), oklch(0.11 0.04 265);
+  }
+
+  .avatar-ring {
+    background: linear-gradient(
+      135deg,
+      oklch(0.72 0.18 205),
+      oklch(0.6 0.28 290),
+      oklch(0.7 0.3 320)
+    );
+    padding: 2px;
+    border-radius: 50%;
+  }
+
+  .nav-link {
+    @apply text-muted-foreground hover:text-foreground transition-colors duration-200;
+  }
+
+  .section-title {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    @apply text-2xl font-bold text-foreground;
+  }
+
+  .metric-card {
+    background: oklch(0.16 0.055 265 / 0.8);
+    border: 1px solid oklch(1 0 0 / 0.08);
+    border-radius: 12px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.13 0.048 265);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.3 0.1 265);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.55 0.24 290);
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    background: oklch(0.7 0.28 25);
+    border-radius: 50%;
+    animation: pulse-glow 1.5s ease-in-out infinite;
+    box-shadow: 0 0 8px oklch(0.7 0.28 25 / 0.6);
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(0.16 0.055 265) 25%,
+      oklch(0.22 0.07 270) 50%,
+      oklch(0.16 0.055 265) 75%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Safe area insets for notched devices */
+  .safe-area-pb {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  .safe-area-pt {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  /* Minimum touch target sizes for accessibility */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Device-specific smooth scrolling */
+  .scroll-smooth-ios {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* High contrast mode support */
+  @media (forced-colors: active) {
+    .glass-panel {
+      border: 2px solid ButtonText;
+    }
+    .btn-gradient {
+      background: ButtonFace;
+      color: ButtonText;
+      border: 2px solid ButtonText;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    body {
+      background: white;
+      color: black;
+    }
+  }
+}
